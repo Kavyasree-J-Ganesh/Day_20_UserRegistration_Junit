@@ -18,4 +18,18 @@ public class Regex {
             return false;
         }
     }
+
+    public static boolean validateLastName(String lastName){
+        Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}$");
+        Matcher matcher = pattern.matcher(lastName);
+        boolean matchFound = matcher.matches();
+
+        if(matchFound){
+            System.out.println("Last name " + lastName + " is in proper format");
+            return true;
+        } else {
+            System.out.println("Last name " + lastName + " is not in proper format");
+            return false;
+        }
+    }
 }
