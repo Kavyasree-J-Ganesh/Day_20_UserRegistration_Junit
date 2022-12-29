@@ -48,4 +48,18 @@ public class Regex {
             return false;
         }
     }
+
+    static boolean validateMobileNumber(String mobileNumber){
+        Pattern pattern = Pattern.compile("^[0-9]{2} [0-9]{10}$");
+        Matcher matcher = pattern.matcher(mobileNumber);
+        boolean matchFound = matcher.matches();
+
+        if(matchFound){
+            System.out.println("Mobile Number " + mobileNumber + " is in proper format");
+            return true;
+        } else {
+            System.out.println("Mobile Number " + mobileNumber + " is not in proper format");
+            return false;
+        }
+    }
 }
