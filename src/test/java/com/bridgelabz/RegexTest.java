@@ -20,4 +20,13 @@ public class RegexTest {
         valid = Regex.validateLastName("ganesh");
         Assertions.assertEquals(false, valid);
     }
+
+    @Test
+    public void testValidateEmail(){
+        boolean valid = Regex.validateEmail("kavya@gmail.com");
+        Assertions.assertEquals(true, valid);
+
+        valid = Regex.validateLastName("kavz1234");
+        Assertions.assertEquals(false, valid);
+    }
 }
