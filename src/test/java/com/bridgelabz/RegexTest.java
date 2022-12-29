@@ -39,5 +39,12 @@ public class RegexTest {
         Assertions.assertEquals(false, valid);
     }
 
+    @Test
+    public void testValidatePassword(){
+        boolean valid = Regex.validatePassword("12345678");
+        Assertions.assertEquals(true, valid);
 
+        valid = Regex.validatePassword("jhjh");
+        Assertions.assertEquals(false, valid);
+    }
 }
