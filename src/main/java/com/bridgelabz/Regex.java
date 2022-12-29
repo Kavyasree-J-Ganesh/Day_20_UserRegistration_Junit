@@ -62,4 +62,18 @@ public class Regex {
             return false;
         }
     }
+
+    static boolean validatePassword(String password){
+        Pattern pattern = Pattern.compile("[^ ]{8,}");
+        Matcher matcher = pattern.matcher(password);
+        boolean matchFound = matcher.matches();
+
+        if(matchFound){
+            System.out.println("Password " + password + " is in proper format");
+            return true;
+        } else {
+            System.out.println("Password " + password + " is not in proper format");
+            return false;
+        }
+    }
 }

@@ -38,4 +38,13 @@ public class RegexTest {
         valid = Regex.validateLastName("919745775612");
         Assertions.assertEquals(false, valid);
     }
+
+    @Test
+    public void testValidatePassword(){
+        boolean valid = Regex.validatePassword("12345678");
+        Assertions.assertEquals(true, valid);
+
+        valid = Regex.validatePassword("jhjh");
+        Assertions.assertEquals(false, valid);
+    }
 }
