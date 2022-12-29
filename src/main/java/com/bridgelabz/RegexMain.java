@@ -10,7 +10,7 @@ public class RegexMain {
         Regex.validateEmail("kavyaganeshgmail.com");
         Regex.validateMobileNumber("91 9745775612");
         Regex.validateMobileNumber("919745775612");
-        Regex.validatePassword("123");
-        Regex.validatePassword("kav&*j1234");
+        Regex.validatePassword("fhfgdddgqA");
+        Regex.validatePassword("hhhh#4A123");
     }
 }
