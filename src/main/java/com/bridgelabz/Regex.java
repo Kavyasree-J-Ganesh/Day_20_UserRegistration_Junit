@@ -64,11 +64,19 @@ public class Regex {
     }
 
     static boolean validatePassword(String password){
-        Pattern pattern = Pattern.compile("^(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[A-Z])(?=.*[0-9])(?=.{8,}).*$");
+        Pattern pattern = Pattern.compile("^(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$");
         Matcher matcher = pattern.matcher(password);
         boolean matchFound = matcher.matches();
 
-        if(matchFound){
+        pattern = Pattern.compile("^[A-Za-z0-9]*[@#$%^&+!=]{1}[A-Za-z0-9]*$");
+        matcher = pattern.matcher(password);
+
+        int count = 0;
+        while (matcher.find()) {
+            count++;
+        }
+
+        if(matchFound && count==1){
             System.out.println("Password " + password + " is in proper format");
             return true;
         } else {

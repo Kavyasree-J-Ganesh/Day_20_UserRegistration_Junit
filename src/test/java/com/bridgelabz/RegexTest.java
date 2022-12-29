@@ -41,10 +41,10 @@ public class RegexTest {
 
     @Test
     public void testValidatePassword(){
-        boolean valid = Regex.validatePassword("1234A5678");
+        boolean valid = Regex.validatePassword("1234A56@78");
         Assertions.assertEquals(true, valid);
 
-        valid = Regex.validatePassword("jhjhAShjhjha");
+        valid = Regex.validatePassword("jhjhAShjh1@@jha");
         Assertions.assertEquals(false, valid);
     }
 }
