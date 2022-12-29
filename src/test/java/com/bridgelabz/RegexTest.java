@@ -29,4 +29,13 @@ public class RegexTest {
         valid = Regex.validateLastName("kavz1234");
         Assertions.assertEquals(false, valid);
     }
+
+    @Test
+    public void testValidateMobileNumber(){
+        boolean valid = Regex.validateMobileNumber("91 9745775612");
+        Assertions.assertEquals(true, valid);
+
+        valid = Regex.validateLastName("919745775612");
+        Assertions.assertEquals(false, valid);
+    }
 }
