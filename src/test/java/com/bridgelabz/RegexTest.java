@@ -11,4 +11,13 @@ public class RegexTest {
         valid = Regex.validateFirstName("kavya");
         Assertions.assertEquals(false, valid);
     }
+
+    @Test
+    public void testValidateLastName(){
+        boolean valid = Regex.validateLastName("Ganesh");
+        Assertions.assertEquals(true, valid);
+
+        valid = Regex.validateLastName("ganesh");
+        Assertions.assertEquals(false, valid);
+    }
 }
