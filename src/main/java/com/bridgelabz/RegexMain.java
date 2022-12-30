@@ -41,19 +41,19 @@ public class RegexMain {
         System.out.println("--------------------");
         System.out.println("Invalid Emails");
         System.out.println("");
-        Regex.validateEmail("abc");
-        Regex.validateEmail("abc@.com.my");
-        Regex.validateEmail("abc123@gmail.a");
-        Regex.validateEmail("abc123@.com");
-        Regex.validateEmail("abc123@.com.com");
-        Regex.validateEmail(".abc@abc.com");
-        Regex.validateEmail("abc()*@gmail.com");
-        Regex.validateEmail("abc@%*.com");
-        Regex.validateEmail("abc..2002@gmail.com");
-        Regex.validateEmail("abc.@gmail.com");
-        Regex.validateEmail("abc@abc@abc@gmail.com");
-        Regex.validateEmail("abc@gmail.com.1a");
-        Regex.validateEmail("abc@gmail.com.aa.au");
+            Regex.validateEmail("abc");
+            Regex.validateEmail("abc@.com.my");
+            Regex.validateEmail("abc123@gmail.a");
+            Regex.validateEmail("abc123@.com");
+            Regex.validateEmail("abc123@.com.com");
+            Regex.validateEmail(".abc@abc.com");
+            Regex.validateEmail("abc()*@gmail.com");
+            Regex.validateEmail("abc@%*.com");
+            Regex.validateEmail("abc..2002@gmail.com");
+            Regex.validateEmail("abc.@gmail.com");
+            Regex.validateEmail("abc@abc@abc@gmail.com");
+            Regex.validateEmail("abc@gmail.com.1a");
+            Regex.validateEmail("abc@gmail.com.aa.au");
 
     }
 }
