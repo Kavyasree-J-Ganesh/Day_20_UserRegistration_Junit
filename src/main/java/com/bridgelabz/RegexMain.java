@@ -1,8 +1,23 @@
 package com.bridgelabz;
 
+import java.util.Scanner;
+
 public class RegexMain {
     public static void main(String[] args) {
-        Regex.validateFirstName("Kavya");
-        Regex.validateFirstName("kavya");
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Enter a Firstname");
+        String firstName = scan.nextLine();
+        Regex.validateFirstName(firstName);
+        System.out.println("Enter a Firstname");
+        firstName = scan.nextLine();
+        Regex.validateFirstName(firstName);
+
+        System.out.println("Enter a Lastname");
+        String lastName = scan.nextLine();
+        Regex.validateLastName(lastName);
+        System.out.println("Enter a Lastname");
+        lastName = scan.nextLine();
+        Regex.validateLastName(lastName);
     }
 }
