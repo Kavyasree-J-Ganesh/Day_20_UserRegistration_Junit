@@ -26,7 +26,7 @@ public class RegexTest {
         boolean valid = Regex.validateEmail("kavya@gmail.com");
         Assertions.assertEquals(true, valid);
 
-        valid = Regex.validateLastName("kavz1234");
+        valid = Regex.validateEmail("kavz1234");
         Assertions.assertEquals(false, valid);
     }
 }
