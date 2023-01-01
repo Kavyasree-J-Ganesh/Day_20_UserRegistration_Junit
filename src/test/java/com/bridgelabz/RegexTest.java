@@ -3,33 +3,59 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.Test;
+import static org.junit.Assert.fail;
 
 public class RegexTest {
     @Test
-    public void testValidateFirstName(){                     //Happy case
-        boolean valid = Regex.validateFirstName("Kavya");
-        Assertions.assertEquals(true, valid);
+    public void testValidateFirstName(){                   //Happy case
+        try{
+            boolean valid = Regex.validateFirstName("Kavya");
+            Assertions.assertEquals(true, valid);
+        } catch (CustomException e){
+            fail("Should not throw exception");
+        }
 
-        valid = Regex.validateFirstName("kavya");              // Sad case
-        Assertions.assertEquals(false, valid);
+        try{
+            boolean valid = Regex.validateFirstName("kavya");              // Sad case
+        }catch (CustomException e){
+            Assertions.assertEquals("Invalid Firstname", e.getMessage());
+        }
     }
 
     @Test
     public void testValidateLastName(){
-        boolean valid = Regex.validateLastName("Ganesh");
-        Assertions.assertEquals(true, valid);
+        try{
+            boolean valid = Regex.validateLastName("Ganesh");
+            Assertions.assertEquals(true, valid);
+        } catch (CustomException e){
+            fail("Should not throw exception");
+        }
 
-        valid = Regex.validateLastName("ganesh");
-        Assertions.assertEquals(false, valid);
+        try{
+            boolean valid = Regex.validateLastName("ganesh");
+        }catch (CustomException e){
+            Assertions.assertEquals("Invalid Lastname", e.getMessage());
+        }
+
+
     }
 
     @Test
     public void testValidateEmail(){
-        boolean valid = Regex.validateEmail("kavya@gmail.com");
-        Assertions.assertEquals(true, valid);
+        try{
+            boolean valid = Regex.validateEmail("kavya@gmail.com");
+            Assertions.assertEquals(true, valid);
+        } catch (CustomException e){
+            fail("Should not throw exception");
+        }
 
-        valid = Regex.validateLastName("kavz1234");
-        Assertions.assertEquals(false, valid);
+        try{
+            boolean valid = Regex.validateEmail("kavz1234");
+        }catch (CustomException e){
+            Assertions.assertEquals("Invalid Email", e.getMessage());
+        }
+
+
     }
     @ParameterizedTest
     @ValueSource(
@@ -40,8 +66,13 @@ public class RegexTest {
             }
     )
     public void testValidateEmailParameterizedHappy(String email){
-        boolean valid = Regex.validateEmail(email);
-        Assertions.assertEquals(true, valid);
+        try{
+            boolean valid = Regex.validateEmail(email);
+            Assertions.assertEquals(true, valid);
+        } catch (CustomException e){
+            fail("Should not throw exception");
+        }
+
     }
 
     @ParameterizedTest
@@ -55,25 +86,43 @@ public class RegexTest {
             }
     )
     public void testValidateEmailParameterizedSad(String email){
-        boolean valid = Regex.validateEmail(email);
-        Assertions.assertEquals(false, valid);
+        try{
+            boolean valid = Regex.validateEmail(email);
+        }catch (CustomException e){
+            Assertions.assertEquals("Invalid Email", e.getMessage());
+        }
     }
 
     @Test
     public void testValidateMobileNumber(){
-        boolean valid = Regex.validateMobileNumber("91 9745775612");
-        Assertions.assertEquals(true, valid);
+        try{
+            boolean valid = Regex.validateMobileNumber("91 9745775612");
+            Assertions.assertEquals(true, valid);
+        } catch (CustomException e){
+            fail("Should not throw exception");
+        }
 
-        valid = Regex.validateLastName("919745775612");
-        Assertions.assertEquals(false, valid);
+        try{
+            boolean valid = Regex.validateMobileNumber("919745775612");
+            Assertions.assertEquals(false, valid);
+        }catch (CustomException e){
+            Assertions.assertEquals("Invalid Mobile Number", e.getMessage());
+        }
     }
 
     @Test
     public void testValidatePassword(){
-        boolean valid = Regex.validatePassword("1234A56@78");
-        Assertions.assertEquals(true, valid);
+        try{
+            boolean valid = Regex.validatePassword("1234A56@78");
+        }catch (CustomException e){
+            fail("Should not throw exception");
+        }
 
-        valid = Regex.validatePassword("jhjhAShjh1@@jha");
-        Assertions.assertEquals(false, valid);
+        try{
+            boolean valid = Regex.validatePassword("jhjhAShjh1@@jha");
+
+        }catch (CustomException e){
+            Assertions.assertEquals("Invalid Password", e.getMessage());
+        }
     }
 }

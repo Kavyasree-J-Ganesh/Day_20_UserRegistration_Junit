@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Regex {
 
-    public static boolean validateFirstName(String firstName){
+    public static boolean validateFirstName(String firstName) throws CustomException{
         Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}$");
         Matcher matcher = pattern.matcher(firstName);
         boolean matchFound = matcher.matches();
@@ -15,11 +15,11 @@ public class Regex {
             return true;
         } else {
             System.out.println("First name " + firstName + " is not in proper format");
-            return false;
+            throw new CustomException("Invalid Firstname");
         }
     }
 
-    public static boolean validateLastName(String lastName){
+    public static boolean validateLastName(String lastName) throws CustomException{
         Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}$");
         Matcher matcher = pattern.matcher(lastName);
         boolean matchFound = matcher.matches();
@@ -29,11 +29,11 @@ public class Regex {
             return true;
         } else {
             System.out.println("Last name " + lastName + " is not in proper format");
-            return false;
+            throw new CustomException("Invalid Lastname");
         }
     }
 
-    static boolean validateEmail(String email){
+    static boolean validateEmail(String email) throws CustomException{
         Pattern pattern = Pattern.compile(
                 "^[A-Za-z0-9][A-Za-z0-9+-]*[.]?[A-Za-z0-9+-]+@[A-Za-z0-9][A-Za-z0-9+-]*(.[A-Za-z0-9]+)?.[A-Za-z]{2,6}$"
         );
@@ -45,11 +45,11 @@ public class Regex {
             return true;
         } else {
             System.out.println("Email " + email + " is not in proper format");
-            return false;
+            throw new CustomException("Invalid Email");
         }
     }
 
-    static boolean validateMobileNumber(String mobileNumber){
+    static boolean validateMobileNumber(String mobileNumber) throws CustomException{
         Pattern pattern = Pattern.compile("^[0-9]{2} [0-9]{10}$");
         Matcher matcher = pattern.matcher(mobileNumber);
         boolean matchFound = matcher.matches();
@@ -59,11 +59,11 @@ public class Regex {
             return true;
         } else {
             System.out.println("Mobile Number " + mobileNumber + " is not in proper format");
-            return false;
+            throw new CustomException("Invalid Mobile Number");
         }
     }
 
-    static boolean validatePassword(String password){
+    static boolean validatePassword(String password) throws CustomException{
         Pattern pattern = Pattern.compile("^(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$");
         Matcher matcher = pattern.matcher(password);
         boolean matchFound = matcher.matches();
@@ -81,7 +81,7 @@ public class Regex {
             return true;
         } else {
             System.out.println("Password " + password + " is not in proper format");
-            return false;
+            throw new CustomException("Invalid Password");
         }
     }
 }
