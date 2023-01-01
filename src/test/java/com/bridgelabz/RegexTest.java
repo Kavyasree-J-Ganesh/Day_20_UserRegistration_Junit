@@ -119,4 +119,42 @@ public class RegexTest {
         valid = Regex.validateEmail("abc@gmail.com.aa.au");
         Assertions.assertEquals(false, valid);
     }
+
+    @Test
+    public void testValidateAllFieldsHappy(){
+        boolean valid = Regex.validateFirstName("Keerthana");
+        Assertions.assertEquals(true, valid);
+
+        valid = Regex.validateLastName("Ganesh");
+        Assertions.assertEquals(true, valid);
+
+        valid = Regex.validateEmail("bridgelabz@gmail.com");
+        Assertions.assertEquals(true, valid);
+
+        valid = Regex.validateMobileNumber("91 9496107658");
+        Assertions.assertEquals(true, valid);
+
+        valid = Regex.validatePassword("ahnkhA1@78");
+        Assertions.assertEquals(true, valid);
+    }
+
+
+    @Test
+    public void testValidateAllFieldsSad(){
+        boolean valid = Regex.validateFirstName("keerthana");
+        Assertions.assertEquals(false, valid);
+
+        valid = Regex.validateLastName("ganesh");
+        Assertions.assertEquals(false, valid);
+
+
+        valid = Regex.validateLastName("bridgelabz123");
+        Assertions.assertEquals(false, valid);
+
+        valid = Regex.validateLastName("91949610");
+        Assertions.assertEquals(false, valid);
+
+        valid = Regex.validatePassword("jhjhAShjh1@@jha");
+        Assertions.assertEquals(false, valid);
+    }
 }
