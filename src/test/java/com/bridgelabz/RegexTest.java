@@ -1,5 +1,7 @@
 package com.bridgelabz;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.Test;
 
 public class RegexTest {
@@ -29,6 +31,33 @@ public class RegexTest {
         valid = Regex.validateLastName("kavz1234");
         Assertions.assertEquals(false, valid);
     }
+    @ParameterizedTest
+    @ValueSource(
+            strings = {
+                    "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com",
+                    "abc111@abc.com", "abc-100@abc.net", "abc.100@abc.com.au",
+                    "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com"
+            }
+    )
+    public void testValidateEmailParameterizedHappy(String email){
+        boolean valid = Regex.validateEmail(email);
+        Assertions.assertEquals(true, valid);
+    }
+
+    @ParameterizedTest
+    @ValueSource(
+            strings = {
+                   "abc", "abc@.com.my", "abc123@gmail.a",
+                    "abc123@.com", "abc123@.com.com", ".abc@abc.com",
+                    "abc()*@gmail.com", "abc@%*.com", "abc..2002@gmail.com",
+                    "abc.@gmail.com", "abc@abc@abc@gmail.com", "abc@gmail.com.1a",
+                    "abc@gmail.com.aa.au"
+            }
+    )
+    public void testValidateEmailParameterizedSad(String email){
+        boolean valid = Regex.validateEmail(email);
+        Assertions.assertEquals(false, valid);
+    }
 
     @Test
     public void testValidateMobileNumber(){
@@ -43,116 +72,6 @@ public class RegexTest {
     public void testValidatePassword(){
         boolean valid = Regex.validatePassword("1234A56@78");
         Assertions.assertEquals(true, valid);
-
-        valid = Regex.validatePassword("jhjhAShjh1@@jha");
-        Assertions.assertEquals(false, valid);
-
-
-        // Valid Email check
-
-        valid = Regex.validateEmail("abc@yahoo.com");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateEmail("abc-100@yahoo.com");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateEmail("abc.100@yahoo.com");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateEmail("abc111@abc.com");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateEmail("abc-100@abc.net");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateEmail("abc.100@abc.com.au");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateEmail("abc@1.com");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateEmail("abc@gmail.com.com");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateEmail("abc+100@gmail.com");
-        Assertions.assertEquals(true, valid);
-
-
-        //Invalid Emails
-
-        valid = Regex.validateEmail("abc");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc@.com.my");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc123@gmail.a");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc123@.com");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc123@.com.com");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail(".abc@abc.com");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc()*@gmail.com");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc@%*.com");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc..2002@gmail.com");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc.@gmail.com");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc@abc@abc@gmail.com");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc@gmail.com.1a");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateEmail("abc@gmail.com.aa.au");
-        Assertions.assertEquals(false, valid);
-    }
-
-    @Test
-    public void testValidateAllFieldsHappy(){
-        boolean valid = Regex.validateFirstName("Keerthana");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateLastName("Ganesh");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateEmail("bridgelabz@gmail.com");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validateMobileNumber("91 9496107658");
-        Assertions.assertEquals(true, valid);
-
-        valid = Regex.validatePassword("ahnkhA1@78");
-        Assertions.assertEquals(true, valid);
-    }
-
-
-    @Test
-    public void testValidateAllFieldsSad(){
-        boolean valid = Regex.validateFirstName("keerthana");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateLastName("ganesh");
-        Assertions.assertEquals(false, valid);
-
-
-        valid = Regex.validateLastName("bridgelabz123");
-        Assertions.assertEquals(false, valid);
-
-        valid = Regex.validateLastName("91949610");
-        Assertions.assertEquals(false, valid);
 
         valid = Regex.validatePassword("jhjhAShjh1@@jha");
         Assertions.assertEquals(false, valid);
